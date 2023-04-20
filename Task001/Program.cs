@@ -5,7 +5,22 @@
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-
+Console.Write("Введите целое положительное число: ");
+int number = Convert.ToInt32(Console.ReadLine());
+if (number >= 1)                                     // проверка на натуральность числа
+{
+  NaturalNumbers(number);
+}
+else
+{
+  Console.WriteLine("Вы ввели НЕ ВЕРНОЕ число! Повторите ввод верного числа.");
+}
+void NaturalNumbers(int num)                        // метод хвостовой рекурсии
+{
+  Console.Write($"{num} ");
+  if (num == 1) return;
+  NaturalNumbers(num - 1);
+}
 
 
 
