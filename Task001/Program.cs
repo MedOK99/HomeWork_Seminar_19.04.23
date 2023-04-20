@@ -7,14 +7,15 @@
 
 Console.Write("Введите целое положительное число: ");
 int number = Convert.ToInt32(Console.ReadLine());
-if (number >= 1)                                     // проверка на натуральность числа
+if (number >= 1)                                     // проверка числа на натуральность 
 {
   NaturalNumbers(number);
 }
 else
 {
-  Console.WriteLine("Вы ввели НЕ ВЕРНОЕ число! Повторите ввод верного числа.");
+  Console.WriteLine("Вы ввели НЕ ВЕРНОЕ число! Повторите ввод.");
 }
+
 void NaturalNumbers(int num)                        // метод хвостовой рекурсии
 {
   Console.Write($"{num} ");
