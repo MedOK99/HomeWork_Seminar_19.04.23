@@ -1,33 +1,63 @@
-﻿// Задача 65: Задайте значения M и N. Напишите программу, которая
-// выведет все натуральные числа в промежутке от M до N.
-// M = 1; N = 5 -> "1, 2, 3, 4, 5"
-// M = 4; N = 8 -> "4, 5, 6, 7, 8"
+﻿// Задача 60. Сформируйте трёхмерный массив из неповторяющихся 
+// двузначных чисел. Напишите программу, которая будет построчно 
+// выводить массив, добавляя индексы каждого элемента.
+// Массив размером 2 x 2 x 2
+// Результат:
+// 66(0,0,0) 27(0,0,1) 25(0,1,0) 90(0,1,1)
+// 34(1,0,0) 26(1,0,1) 41(1,1,0) 55(1,1,1)
 
-Console.Write("Введите число M: ");
-int num1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите число N: ");
-int num2 = Convert.ToInt32(Console.ReadLine());
+Console.Clear();
 
-NaturalNumbersRange(num1, num2);
+int x = ReadNumberFromConsole("Введите X матрицы: ");
+int y = ReadNumberFromConsole("Введите Y матрицы: ");
+int z = ReadNumberFromConsole("Введите Z матрицы: ");
+Console.WriteLine();
 
-void NaturalNumbersRange(int m, int n)
+//Random rand = new Random();
+int[,,] array3D = new int[x, y, z];                      // объявляю новый массив
+CreateArray(array3D);                                    // запускаю метод для заполнения массива
+PrintArray(array3D);                                     // запускаю метод печати массива
+
+int ReadNumberFromConsole(string message = "")          // метод для чтения из консоли введённого значения
 {
-    if (m < n)
-    {
-        Console.Write($"{m} ");
-        NaturalNumbersRange(m + 1, n);
-    }
-    else if (m > n)
-    {
-        Console.Write($"{m} ");
-        NaturalNumbersRange(m - 1, n);
-    
-    }
-    else
-    {
-        Console.Write($"{m} ");
-    }
+  if (message != "")
+    Console.WriteLine(message);
+  string input = Console.ReadLine();
+  return int.Parse(input);
 }
+
+void CreateArray(int[, ,] array)               // метод для наполнения трёхмерного массива числами по порядку
+{
+  int p = 40;
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      for (int k = 0; k < array.GetLength(2); k++)
+      {
+        
+        array[i, j, k] = p;
+        p++;
+      }
+      
+    }
+  }
+}
+
+void PrintArray(int[,,] array)   // метод для вывода массива на печать (с табуляцией)
+{
+  for (int i = 0; i < array.GetLength(0); i++)
+  {
+    Console.Write("[      ");
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+      for (int k = 0; k < array.GetLength(2); k++)
+      Console.Write($"{array[i, j, k]} ({i},{j},{k})\t");  // табуляция
+    }
+    Console.Write("]\n");       // добавил "\n" чтобы убрать строку: Console.WriteLine();
+  }
+}
+
 
 
 
